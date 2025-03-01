@@ -29,9 +29,10 @@ abro <-  abro70_00 %>% dplyr::filter(!is.na(abro70_00$decimalLatitude))
 # Primeramente necesitamos obtener el raster de elevacion con respecto 
 # a una presencia y guardalo en algun directorio 
 
-d <- geodata::elevation_3s(lon = abro$decimalLongitude[1],
-                           lat = abro$decimalLatitude[1],
-                           path = "Elevation_raster/elevras.tif/")
+#d <- geodata::elevation_3s(lon = abro$decimalLongitude[1],
+ #                          lat = abro$decimalLatitude[1],
+  #                         path = "Elevation_raster/elevras.tif/")
+
 ### Si ya está descargado podemos solo llamarlo 
 d <- raster::raster("Elevation_raster/elevras.tif/srtm_17_09.tif")
 

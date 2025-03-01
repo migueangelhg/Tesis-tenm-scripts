@@ -8,14 +8,14 @@ library(dplyr)
 set.seed(666)
 
 #Informacion ambiental 
-mx <- list.files("/media/miguel//TOSHIBA EXT/Biomex_70_2000/",
+mx <- list.files("Biomex_70_2000/",
                  pattern = ".tif$",
                  full.names = TRUE,
                  recursive = FALSE)
 mx_ch <- raster::stack(mx)
 
 #Genero un objeto que contenga los registros de presencia
-abro_occ <- rio::import("Abro_occ/Abronia_occ_gbif_doi.csv")
+abro_occ <- rio::import("Abronia_occ_gbif_doi.csv")
 
 # Procedemos a generar otro objeto de abronia graminea, 
 #filtrados de  1970 a 2000 
@@ -29,9 +29,10 @@ abro <-  abro70_00 %>% dplyr::filter(!is.na(abro70_00$decimalLatitude))
 # Primeramente necesitamos obtener el raster de elevacion con respecto 
 # a una presencia y guardalo en algun directorio 
 
-d <- geodata::elevation_3s(lon = abro$decimalLongitude[1],
-                           lat = abro$decimalLatitude[1],
-                           path = "Elevation_raster/elevras.tif/")
+#d <- geodata::elevation_3s(lon = abro$decimalLongitude[1],
+ #                          lat = abro$decimalLatitude[1],
+  #                         path = "Elevation_raster/elevras.tif/")
+
 ### Si ya está descargado podemos solo llamarlo 
 d <- raster::raster("Elevation_raster/elevras.tif/srtm_17_09.tif")
 
